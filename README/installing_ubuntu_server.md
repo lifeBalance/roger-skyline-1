@@ -121,6 +121,6 @@ A really important step is to **remove** the Ubuntu Server ISO from the virtual 
 [:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
 
 <!-- navigation -->
-[home]: README.md
-[back]: README/creating_vm.md
+[home]: ../README.md
+[back]: ./creating_vm.md
 [next]: #

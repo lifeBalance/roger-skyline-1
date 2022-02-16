@@ -58,6 +58,6 @@ In this case, using the command-line requires us to set up the **storage control
 [:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
 
 <!-- navigation -->
-[home]: README.md
-[back]: README.md
-[next]: README/installing_ubuntu_server.md
+[home]: ../README.md
+[back]: ../README.md
+[next]: ./installing_ubuntu_server.md

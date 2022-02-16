@@ -5,11 +5,11 @@ This project, is about installing a Virtual Machine, and discover the basics abo
 ## VM Part
 For this part of the assignment we have to create a [virtual machine](https://en.wikipedia.org/wiki/Virtual_machine) in the [hypervisor](https://en.wikipedia.org/wiki/Hypervisor) of our choice. There are plenty of hypervisors out there, but we chose [VirtualBox](https://www.virtualbox.org/) because it's quite intuitive and easy to use.
 
-* [Creating the Virtual Machine][README/creating_vm.md]
+* [Creating the Virtual Machine][./README/creating_vm.md]
 
 Once the **VM** has been created, we must install a Linux-based operating system. Again, there are lots of Linux distros, but we went with with [Ubuntu Server](https://ubuntu.com/download/server) for its relative popularity of use in servers.
 
-* [Installing Ubuntu Server][README/installing_ubuntu_server.md]
+* [Installing Ubuntu Server][./README/installing_ubuntu_server.md]
 
 During the creation of the VM, we added a virtual disk with a disk of **8 GB**, and during the installation of the operating system we created a partition **4.2 GB** in it. There are several ways of checking the **disk size** and that the required **4.2 GB** partition is there; the `fdisk` command is one of them:
 ```
@@ -165,5 +165,5 @@ A [DoS](https://en.wikipedia.org/wiki/Denial-of-service_attack) is is a cyber-at
 <!-- navigation -->
 [home]: #
 [back]: #
-[next]: README/creating_vm.md
+[next]: ./README/creating_vm.md
 
