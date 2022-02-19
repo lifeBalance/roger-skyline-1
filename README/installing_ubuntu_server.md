@@ -42,7 +42,7 @@ Next we're faced with the first step of the installation, choosing our **languag
 ### Keyboard
 Then the **keyboard layout**, where we can also select layout variants.
 
-![language](images/installing_ubuntu_server/07_select_keyboard_layout.png)
+![keyboard](images/installing_ubuntu_server/07_select_keyboard_layout.png)
 
 ### Network Interface
 Time to configure the network interface. We'll go with the defaults in this case:
