@@ -1,16 +1,16 @@
-# `cron` assignments
+# Schedule Task for Packages Update
 For this part of the assignment we have to do two things:
 
-1. Create a **script** that updates all the sources of package, then your packages and which logs the whole in a file named /var/log/update_script.log. 
+1. Create a **script** that updates all the sources of packages, then your packages and which logs the whole in a file named /var/log/update_script.log. 
 2. Create a **scheduled task** for this script once a week at **4AM** and every time the machine reboots.
 
 ## 1. Update Packages Script
-We can create a folder to store our **scripts**:
+Let's start by creating a folder to store our **scripts**:
 ```
 mkdir -r ./local/bin
 ```
 
-Then add it to our PATH; so in our shell configuration we'll add:
+Let's add it to our PATH; so in our shell configuration we'll add:
 ```
 export PATH=$HOME/.local/bin:$PATH
 ```
@@ -18,18 +18,30 @@ export PATH=$HOME/.local/bin:$PATH
 Finally, let's write the script:
 ```
 vim ~/.local/bin/update_packages.sh
-chmod +x ~/.local/bin/update_packages.sh 
 ```
 
 The contents:
-```
+```sh
 #!/bin/sh
 
 updates_log=/var/log/update_script.log
-date > $updates_log
-sudo apt update -y	> &updates_log
-sudo apt upgrade -y	> &updates_log
+
+printf "\nPackages Update %s" "$(date)" >> $updates_log
+sudo apt update -y	| sudo tee -a "$(updates_log)"
+sudo apt upgrade -y	| sudo tee -a "$(updates_log)"
 ```
+
+Now we have to **upload** the script to the server. For that we'll use the [scp](https://www.ssh.com/academy/ssh/scp) command (short for **Secure File Copy**), which has the following syntax:
+```
+scp <file to upload> <username>@<hostname>:<destination path>
+```
+
+Let's not forget to add the proper **executable** permissions:
+```
+chmod +x ~/.local/bin/update_packages.sh 
+```
+
+> `755` can beused instead of `+x`.
 
 ## 2. Create a `cron` scheduled task
 When it comes to `cron`, we have to differentiate between two utilities:

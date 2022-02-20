@@ -46,8 +46,8 @@ We're also asked to be able to use `sudo` with our non-root user, which is alrea
 * [Firewall](./README/ufw.md)
 * [Set a protection against DoS](./README/dos_protection.md)
 * [Set a protection against Port Scans](./README/port_scans_protection.md)
-* [Stop Unneeded Services](./README/stop_needles_services.md)
-* [Schedule a Task](./README/crontab_script.md)
+* [Stop Needless Services](./README/stop_needles_services.md)
+* [Schedule a Task for Updating Packages](./README/crontab_packages_update.md)
 * [Monitor crontab](./README/monitor_crontab.md)
 
 
