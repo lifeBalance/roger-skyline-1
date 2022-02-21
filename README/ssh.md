@@ -22,6 +22,7 @@ ssh-copy-id -i ~/.ssh/hive.pub roger@192.156.1.2
 Now it's a good idea to edit the `/etc/ssh/sshd_config` file and add the line:
 ```
 PasswordAuthentication no
+PubkeyAuthentication yes
 ```
 
 ## Change Port and set No Root Access
@@ -44,3 +45,11 @@ After all these changes have been done, we have to restart the `ssh` service:
 ```
 sudo systemctl restart ssh
 ```
+
+---
+<!-- navigation links -->
+[:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
+
+[home]: ../README.md
+[back]: ./README/static_ip.md
+[next]: ./README/ufw.md

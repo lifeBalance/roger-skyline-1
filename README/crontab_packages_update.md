@@ -81,3 +81,11 @@ So if we want to run our script everyday at **4AM** we'd add:
 0 4 * * 0	/home/roger/.local/bin/update_packages.sh
 @reboot		/home/roger/.local/bin/update_packages.sh
 ```
+
+---
+<!-- navigation links -->
+[:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
+
+[home]: ../README.md
+[back]: ./README/stop_needless_services.md
+[next]: ./README/monitor_crontab.md

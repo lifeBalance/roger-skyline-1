@@ -41,6 +41,8 @@ We're also asked to be able to use `sudo` with our non-root user, which is alrea
 * The `-G` (short for `--Groups`) option takes a (comma-separated, without whitespace at all) list of additional groups to assign the user to.
 * Note that the user `bob` is the **last argument**.
 
+The next parts of the assignment have separate notes:
+
 * [Static IP](./README/static_ip.md)
 * [SSH](./README/ssh.md)
 * [Firewall](./README/ufw.md)
@@ -50,6 +52,54 @@ We're also asked to be able to use `sudo` with our non-root user, which is alrea
 * [Schedule a Task for Updating Packages](./README/crontab_packages_update.md)
 * [Monitor crontab](./README/monitor_crontab.md)
 
+## Web Server
+As an **optional** part of the assignment, we have to:
+
+* Set a [web server](https://en.wikipedia.org/wiki/Web_server) of our choice (between [Nginx](https://docs.nginx.com/nginx/admin-guide/web-server/) and [Apache](https://httpd.apache.org/)).
+* Set a self-signed [SSL](https://www.ssl.com/faqs/faq-what-is-ssl/) certificate on all of your services.
+* Set a web application from those choices:
+
+	* A login page.
+	* A display site.
+	* A wonderful website that blow our minds.
+
+We explain how to deal with these tasks in separate sections:
+
+* [Setting up a web server](web_server.md)
+
+## Website Deployment
+The last task of the optional part of the project is to propose a *functional* deployment solution.
+
+## Submitting Project
+The project's subject states that we do **not** have to **return** our **virtual machine**, but a [checksum](https://en.wikipedia.org/wiki/Checksum) of its **virtual disk** file. We can do this with:
+```
+shasum < /home/rodrodri/VirtualBox VMs/roger.vdi > virtual_disk.sha1
+```
+
+Note that during evaluation, we may have to make some changes in the machine in order to show how everything works. Those changes will affect the **checksum** of the virtual disk, and further evaluators will notice that the **checksum** we submitted doesn't match the one we submitted. In order to avoid that we can do two things:
+
+1. Before starting the evaluation, we must:
+
+* Create a **snapshot** of the machine. So select the virtual machine so that the **VirtualBox VM** toolbar shows up. Then click on `Machine > Take Snapshot`, and name me whatever you want.
+* After the correction is over click **Restore Snapshot** then **Delete Snapshot**. You can create new Snapshot for new evaluation.
+
+2. The other thing is to create a **backup** of the **virtual disk**, which we can put back in the VM in case we forget about the Snapshot.
+
+### Mounting a Virtual Disk
+Imagine the snapshot thingie failed miserably, well, luckily we have a backup of the **virtual disk**. Installing it into the **virtual machine** is a two-step process:
+
+1. First we gotta get rid of the **old virtual disk**. Click on the **VM manager** to activate the **VirtualBox** toolbar. Then click on `File > Virtual Media Manager`; once the manager is open we have to select the **old virtual disk**, then click on the **Release** icon in order to detach the **virtual disk** file from the controller. Then we have to click on the **Remove** icon to remove the media from VirtualBox.
+
+2. Second, we proceed to mount the **new virtual disk** in a **virtual machine**. Click on the **virtual machine** where you want to install the disk, open its **settings**, and under the **storage** section: add a new hard disk attachment to the SATA controller. Choose existing VDI, select your VDI.
+
+### For the evaluator
+In order to check the **virtual machine** is in the same state than when we submitted the project:
+```
+shasum < roger.vdi > evaluation.sha1
+diff virtual_disk.sha1 evaluation.sha1
+```
+
+If everything is **ok**, we shouldn't get any output.
 
 ---
 [:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]

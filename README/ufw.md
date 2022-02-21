@@ -2,7 +2,7 @@
 For this section we have to have to set the rules of your firewall on your server only with the services used
 outside the VM.
 
-> We'll be using the [Uncomplicated Firewall](https://en.wikipedia.org/wiki/Uncomplicated_Firewall), which was made available by default in all Ubuntu installations after 8.04 LTS. It's an interface to [iptables](https://en.wikipedia.org/wiki/Iptables), which is a program to configure the configure the IP packet filter rules of the [Netfilter kernel framework](https://en.wikipedia.org/wiki/Netfilter). In short, **ufw** is an easy alternative to **iptables**.
+> We'll be using [UFW](https://en.wikipedia.org/wiki/Uncomplicated_Firewall) (short for Uncomplicated Firewall), which was made available by default in all Ubuntu installations after 8.04 LTS. It's an interface to [iptables](https://en.wikipedia.org/wiki/Iptables), which is a program to configure the configure the IP packet filter rules of the [Netfilter kernel framework](https://en.wikipedia.org/wiki/Netfilter). In short, **ufw** is an easy alternative to **iptables**.
 
 If for some reason, `ufw` not installed:
 ```
@@ -71,3 +71,11 @@ And check its **status**:
 ```
 sudo ufw status
 ```
+
+---
+<!-- navigation links -->
+[:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
+
+[home]: ../README.md
+[back]: ./README/ssh.md
+[next]: ./README/dos_protection.md

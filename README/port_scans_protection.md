@@ -42,3 +42,11 @@ And restart `psad`:
 ```
 psad -R
 ```
+
+---
+<!-- navigation links -->
+[:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
+
+[home]: ../README.md
+[back]: ./README/dos_protection.md
+[next]: ./README/stop_needless_services.md
