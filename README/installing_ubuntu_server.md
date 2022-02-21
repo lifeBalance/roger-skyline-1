@@ -123,4 +123,4 @@ A really important step is to **remove** the Ubuntu Server ISO from the virtual 
 <!-- navigation -->
 [home]: ../README.md
 [back]: ./creating_vm.md
-[next]: #
+[next]: ./static_ip.md

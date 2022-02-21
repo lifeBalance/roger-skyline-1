@@ -90,3 +90,10 @@ To open our crontab file, where we'll add:
 ```
 @midnight	/home/roger/.local/bin/monitor_crontab.sh
 ```
+---
+<!-- navigation links -->
+[:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
+
+[home]: ../README.md
+[back]: ./crontab_packages_update.md
+[next]: ./web_server.md

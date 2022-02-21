@@ -41,5 +41,5 @@ You simply create a YAML description of the required network interfaces and what
 [:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
 
 [home]: ../README.md
-[back]: ../README.md
-[next]: ./README/ssh.md
+[back]: ./README.md
+[next]: ./ssh.md

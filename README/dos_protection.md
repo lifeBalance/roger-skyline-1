@@ -14,3 +14,11 @@ sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 ```
 
 > From now on, the contents of `/etc/fail2ban/jail.local`, will override the settings contained in `/etc/fail2ban/jail.conf`.
+
+---
+<!-- navigation links -->
+[:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
+
+[home]: ../README.md
+[back]: ./ufw.md
+[next]: ./port_scans_protection.md

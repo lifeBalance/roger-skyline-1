@@ -97,7 +97,7 @@ Once we have modified the **default virtual hosts file** to our heart's content,
 scp -P 69 evil.conf roger@192.168.56.2:/etc/apache2/sites-available/
 ```
 
-Once the configuration is up, we must enable it with:
+Once the configuration is up, we must **enable** it with:
 ```
 cd /var/www/sites-available/
 sudo a2ensite evil.conf
@@ -109,6 +109,10 @@ service apache2 reload
 ```
 
 > I had some trouble setting up a **ServerName** for the site; after editing the `/etc/hosts` on the **host** to bypass the DNS (`192.168.56.2 evil.morty`), the browser still couldn't open the site.
+
+By the way, this is what the site looked like:
+
+![evil.morty](images/evil.morty.png)
 
 ---
 <!-- navigation links -->

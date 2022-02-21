@@ -77,5 +77,5 @@ sudo ufw status
 [:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
 
 [home]: ../README.md
-[back]: ./README/ssh.md
-[next]: ./README/dos_protection.md
+[back]: ./ssh.md
+[next]: ./dos_protection.md

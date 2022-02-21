@@ -70,6 +70,8 @@ We explain how to deal with these tasks in separate sections:
 ## Website Deployment
 The last task of the optional part of the project is to propose a *functional* deployment solution.
 
+* [Website Deployment](deployment.md)
+
 ## Submitting Project
 The project's subject states that we do **not** have to **return** our **virtual machine**, but a [checksum](https://en.wikipedia.org/wiki/Checksum) of its **virtual disk** file. We can do this with:
 ```
