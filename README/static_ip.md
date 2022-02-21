@@ -1,13 +1,13 @@
 # Static IP
 The assignment forbids us to use the DHCP service of our machine. Instead we gotta configure it to have a **static IP** and a **Netmask** in `\30`.
 
-![no nat](README/images/network_security/01_no_nat.png)
+![no nat](./images/network_security/01_no_nat.png)
 
 > In our `init` project we were using the default Attached to NAT, so in order to connect to our **virtual machine** from our mac **host**, we had to use the loopback interface (127.0.0.1) not a **static ip**. That's why we had to add a **Port Forwarding Rule** (clicking in `Advance > Port Forwarding`).
 
 The first thing we have to do is open the VirtualBox **settings** and go to the **Network** tab. Once there, we have to change the **NAT** setting to **Bridge Adapter**.
 
-![bridged adapter](README/images/network_security/02_bridged_adapter.png)
+![bridged adapter](./images/network_security/02_bridged_adapter.png)
 
 > Note how the name of the interface also changed to the one we use to connect to the internet, in my case `en0`.
 
@@ -41,5 +41,5 @@ You simply create a YAML description of the required network interfaces and what
 [:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
 
 [home]: ../README.md
-[back]: ./README.md
+[back]: ../README.md
 [next]: ./ssh.md

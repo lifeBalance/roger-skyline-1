@@ -52,3 +52,12 @@ For example, let's say we want to take care of the `unattended-upgrades` service
 sudo systemctl stop unattended-upgrades
 sudo systemctl disable unattended-upgrades
 ```
+
+That's how we should proceed with the rest of the services we want to **disable**.
+---
+<!-- navigation links -->
+[:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
+
+[home]: ../README.md
+[back]: ./port_scans_protection.md
+[next]: ./crontab_packages_update.md

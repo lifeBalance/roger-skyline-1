@@ -4,12 +4,12 @@ outside the VM.
 
 > We'll be using [UFW](https://en.wikipedia.org/wiki/Uncomplicated_Firewall) (short for Uncomplicated Firewall), which was made available by default in all Ubuntu installations after 8.04 LTS. It's an interface to [iptables](https://en.wikipedia.org/wiki/Iptables), which is a program to configure the configure the IP packet filter rules of the [Netfilter kernel framework](https://en.wikipedia.org/wiki/Netfilter). In short, **ufw** is an easy alternative to **iptables**.
 
-If for some reason, `ufw` not installed:
+But if for some reason, `ufw` was not installed:
 ```
 sudo apt update && sudo apt install ufw
 ```
 ## Default policies
-By default, **UFW** is set to **deny all incoming connections** and **allow all outgoing connections**. This means anyone trying to reach your server would not be able to connect, while any application within the server would be able to reach the outside world. Additional rules to allow specific services and ports are included as exceptions to this general policy.
+By default, **UFW** is set to **deny all** incoming connections and **allow all** outgoing connections. This means anyone trying to reach your server would not be able to connect, while any application within the server would be able to reach the outside world. Additional rules to allow specific services and ports are included as exceptions to this general policy.
 
 > If we start the firewall straight ahead, using `sudo ufw enable`, we may find ourselves unable to access our server. That's why we have to take some previous steps.
 

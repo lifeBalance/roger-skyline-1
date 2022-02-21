@@ -4,7 +4,7 @@ The assignment requires the following SSH settings:
 * SSH access must be done only with **public keys**.
 * SSH **root access** should not be allowed.
 
-We can set all the settings above by editing the `/etc/ssh/sshd_config` file. But before anything, let's upload our **public key** to the server, later we'll see why.
+We can set all the settings above by editing the `/etc/ssh/sshd_config` file. But before anything, let's upload our **public key** to the server (later we'll see why).
 
 For this section we'll assume that we have the `ssh` server installed in our machine. Otherwise, that's trivial to fix with:
 ```
@@ -51,5 +51,5 @@ sudo systemctl restart ssh
 [:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
 
 [home]: ../README.md
-[back]: ./README/static_ip.md
-[next]: ./README/ufw.md
+[back]: ./static_ip.md
+[next]: ./ufw.md
