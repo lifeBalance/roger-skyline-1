@@ -1,0 +1,9 @@
+[Unit]
+Description=Port scan attack detector daemon
+After=psad.service
+[Service]
+ExecStart=/usr/sbin/psadwatchd
+Type=oneshot
+RemainAfterExit=yes
+[Install]
+WantedBy=multi-user.target
