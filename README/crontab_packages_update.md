@@ -82,6 +82,8 @@ So if we want to run our script everyday at **4AM** we'd add:
 @reboot		/home/roger/.local/bin/update_packages.sh
 ```
 
+> Even though our scripts are in `PATH`, we have to include the **full path** to them. That's because `cron` runs in a sparse environment where the value of `PATH` is not the same that the one we set in our `~/.bashrc`.
+
 ---
 <!-- navigation links -->
 [:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
