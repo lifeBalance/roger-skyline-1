@@ -1,0 +1,3 @@
+#!/bin/sh
+
+git --work-tree='/var/www/evil' --git-dir='/home/roger/bare_evil.git' checkout -f
