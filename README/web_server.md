@@ -114,10 +114,80 @@ By the way, this is what the site looked like:
 
 ![evil.morty](images/evil.morty.png)
 
+## Set a SSL Certificate
+Configuring an [SSL](https://en.wikipedia.org/wiki/Transport_Layer_Security) (Secure Sockets Layer) connection, allows you to add an additional asymmetric encryption protocol to the common HTTP. To establish a secure connection, Apache will need an **SSL certificate** that can be obtained from a **Certification Authority**. For convenience, in this example we will use a **self-signed certificate**, used only in test and development environments.
+
+## The Snakeoil Certificate
+When the package `ssl-cert` is installed, a **self-signed certificate** gets automatically created. It includes:
+
+* The **certificate**, in `/etc/ssl/certs/ssl-cert-snakeoil.pem`
+* The **private key** in `/etc/ssl/private/ssl-cert-snakeoil.key`
+
+In order to add this certificate to our Apache web server, we have to make sure that the ssl mode is enabled: 
+```
+sudo a2enmod ssl
+```
+
+Then we have to modify the **virtual hosts file** of our site, adding a configuration for [HTTPS](https://en.wikipedia.org/wiki/HTTPS):
+```
+<VirtualHost *:443>
+        ServerName evil.morty
+        ServerAdmin roger@skyline
+        DocumentRoot /var/www/evil/
+        SSLEngine On
+        SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
+        SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+Then **reload** the service to activate the new configuration:
+```
+sudo systemctl restart apache2
+```
+
+Because the certificate we created isn’t signed by one of our browser’s trusted **certificate authorities**, we will shown a warning about our connection not being private. Click **ADVANCED** and then the link provided to proceed to our host anyways.
+
+We may also need to add a `Redirect` directive to our `<VirtualHost *:80>` configuration:
+```
+Redirect / https://evil.morty
+```
+
+### Regenerating Snakeoil
+If for some reason you can't find the files mentioned above, they can be regenerated manually with the following command:
+```
+sudo make-ssl-cert generate-default-snakeoil --force-overwrite
+```
+
+Even if you have the files, regenerating them may be useful in certain cases; for example, we might find that the snakeoil certificate on our system is actually quite old. That's because is is not regenerated every time the package gets upgraded so at some point will be outdated.
+
+### Creating our own Certificate
+Create an **SSL certificate** takes two steps:
+
+* Create a **private key**.
+* Create the **public certificate** based on the **private key**.
+
+Both steps can be accomplished in a single line:
+```
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 /
+-keyout /etc/ssl/private/apache-selfsigned.key /
+-out /etc/ssl/certs/apache-selfsigned.crt
+```
+
+The meaning of the **options** used:
+
+* `req`, is for *requesting* a [Certificate Signing Request](https://en.wikipedia.org/wiki/Certificate_signing_request).
+* `-x509`, creates a [X.509 Certificate](https://en.wikipedia.org/wiki/X.509).
+* `-days 365` the time validity of the certificate.
+* `-keyout /etc/ssl/private/apache-selfsigned.key`, where do we want the **private key**.
+* `-out /etc/ssl/certs/apache-selfsigned.crt`, where do we want the **public certificate**.
+
+
 ---
 <!-- navigation links -->
 [:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
 
 [home]: ../README.md
-[back]: ./README/monitor_crontab.md
-[next]: ./README/stop_needless_services.md
+[back]: ./monitor_crontab.md
+[next]: ./stop_needless_services.md

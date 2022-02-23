@@ -27,9 +27,13 @@ Finally, the subject asks us to make sure all the packages required in the proje
 ### Create non-root user
 The first point of the assignment is to create a non-root user to connect to the machine and work. That was already done during the installation, but could be easily done with:
 ```
+$ sudo -i
 # useradd -m bob
 ```
-> The `-m` option is short for `--create-home`, and it's used to create a **home directory** for our user.
+
+> In Ubuntu, `sudo -i` is used to log in as `root`.
+
+The `-m` option is short for `--create-home`, and it's used to create a **home directory** for our user.
 
 ### Add user to sudo
 We're also asked to be able to use `sudo` with our non-root user, which is already possible with the user that we created during the installation. If that wasn't the case, we would have to do:
@@ -65,7 +69,7 @@ As an **optional** part of the assignment, we have to:
 
 We explain how to deal with these tasks in separate sections:
 
-* [Setting up a web server](web_server.md)
+* [Setting up a web server](./README/web_server.md)
 
 ## Website Deployment
 The last task of the optional part of the project is to propose a *functional* deployment solution.
