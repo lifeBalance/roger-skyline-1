@@ -117,6 +117,28 @@ A really important step is to **remove** the Ubuntu Server ISO from the virtual 
 
 ![installation complete](images/installing_ubuntu_server/24_remove_installation_media.png)
 
+### Remove `cloud-init`
+One thing we notice once we start Ubuntu Server, are the messages from [cloud-init](https://cloud-init.io/), which is a package that contains utilities for early initialization of cloud instances. Since we're not planning on launching our server in a cloud environment such as AWS, we can safely remove it:
+
+1. Create an **empty file** to prevent the service from starting:
+```
+sudo touch /etc/cloud/cloud-init.disabled
+```
+
+2. **Disable** all services (uncheck everything except "None"):
+```
+sudo dpkg-reconfigure cloud-init
+```
+
+3. **Uninstall** the package and delete the folders
+```
+sudo dpkg-reconfigure cloud-init
+sudo apt-get purge cloud-init
+sudo rm -rf /etc/cloud/ && sudo rm -rf /var/lib/cloud/
+```
+
+4. **Restart** the machine: `sudo reboot`
+
 ---
 [:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
 
