@@ -70,7 +70,7 @@ We may find **permissions** issue when trying to copy the files to `/var/www/`; 
 ```
 ssh roger@192.168.56.2 -p 69
 sudo chown -R $(whoami) /var/www`
-mkdir /var/wwwmorty
+mkdir /var/www/evil
 ```
 
 While we were at it, we also created a folder for our site, stay tuned!
@@ -94,21 +94,22 @@ scp -P 69 roger@192.168.56.2:/etc/apache2/sites-available/000-default.conf ./
 
 Once we have modified the **default virtual hosts file** to our heart's content, we can save it with another file, and upload it to the server:
 ```
-scp -P 69 evil.conf roger@192.168.56.2:/etc/apache2/sites-available/
+scp -P 69 evil.conf roger@192.168.56.2:/home/roger
 ```
 
-Once the configuration is up, we must **enable** it with:
+Once the configuration is up, we must move it to the right folder, and **enable** it with:
 ```
-cd /var/www/sites-available/
+sudo mv evil.conf /etc/apache2/sites-available/
+cd /etc/apache2/sites-available/
 sudo a2ensite evil.conf
 ```
 
-That must create a link in `/var/www/sites-enabled/`. Then we have to **reload** the server:
+That must create a link in `/var/www/sites-enabled/`. Then we have to **restart** the server:
 ```
-service apache2 reload
+sudo systemctl restart apache2
 ```
 
-> I had some trouble setting up a **ServerName** for the site; after editing the `/etc/hosts` on the **host** to bypass the DNS (`192.168.56.2 evil.morty`), the browser still couldn't open the site.
+> I had some trouble in the **host machine** accessing the site, once I had set up a **ServerName** for the site; after editing the `/etc/hosts` on the **host** to bypass the DNS (`192.168.56.2 evil.morty`), the browser still couldn't open the site.
 
 By the way, this is what the site looked like:
 
@@ -190,4 +191,4 @@ The meaning of the **options** used:
 
 [home]: ../README.md
 [back]: ./monitor_crontab.md
-[next]: ./stop_needless_services.md
+[next]: ./deployment.md

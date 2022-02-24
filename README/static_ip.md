@@ -25,10 +25,15 @@ In my case it was named `enp0s3`. We also needed to find out our:
 * Gateway IP:  172.18.0.1
 * Subnet mask: 255.255.252.0
 
-To configure your system to use a **static IP address**, we have to create a netplan configuration in some YAML file, under the `/etc/netplan/`. In my case there was one named `00-installer-config.yaml`, so I created another one with `sudo edit `/etc/netplan/01-static-ip.yaml` and proceeded to add the following configuration in it:
+To configure your system to use a **static IP address**, we have to create a netplan configuration in some YAML file, under the `/etc/netplan/`. In my case there was one named `00-installer-config.yaml`, so I created another one with `sudo edit `/etc/netplan/01-static-ip.yaml`.
+
+> `.yaml` files are processed in **lexicographical** order. Later files **add to** or **override** earlier files. For example, `/run/netplan/10-foo.yaml` would be updated by `/lib/netplan/20-abc.yaml`.
+
+This is the configuration I added to `/etc/netplan/01-static-ip.yaml`:
 ```yaml
 network:
    version: 2
+   renderer: networkd
    ethernets:
       enp0s3:
          addresses: [172.18.3.99/30]
@@ -40,7 +45,7 @@ network:
 
 You simply create a YAML description of the required network interfaces and what each should be configured to do. From this description Netplan will generate all the necessary configuration for your chosen renderer tool.
 
-> Don't forget to `sudo netplan apply` after modifying the file.
+> Don't forget to `sudo netplan try`, to test the configuration, and `sudo netplan apply` after modifying the file.
 
 With this configuration, we get both **internet connection** and the possibility to connect to our **guest** through a **static IP**. The problem was that I couldn't make it work **home**, since my laptop only had a **WiFi** card, and that seemed to be an issue.
 

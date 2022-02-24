@@ -10,7 +10,7 @@ One of the assignments is to set up a protection against scans on your VM’s op
 ## Installing Portsentry
 To install it:
 ```
-sudo apt update && sudo apt install psad
+sudo apt update && sudo apt install portsentry
 ```
 
 During installation, `dpkg` showed us the following screen:
@@ -58,7 +58,15 @@ Once the changes have been saved, we're ready to **relaunch** the `portsentry` s
 service portsentry start
 ```
 
-Now, if we try to run some **portscan**, we may end up getting our IPs blocked, hence losing `ssh` access to our server. We can access the **virtual machine**, and check the files:
+### Unblocking IPs
+Now, if we try to run some **portscan**:
+```
+sudo nmap -PN -sS 192.168.56.2
+```
+
+> You may want to disable the firewall in order to test the **blocking IP** behaviour.
+
+We may end up getting our IPs blocked, hence losing `ssh` access to our server. We can access the **virtual machine**, and check the files:
 ```
 /var/lib/portsentry/portsentry.blocked.atcp
 /var/lib/portsentry/portsentry.blocked.audp
@@ -74,13 +82,14 @@ A good idea, if we plan on keep doing portscan experimentation, would be to add 
 
 Finally, to get ourselves **unblocked**:
 ```
-iptables -D INPUT -s 123.45.6.7 -j DROP
+sudo iptables -D INPUT -s 123.45.6.7 -j DROP
 ```
 
+And also delete the IP at the end of `/etc/hosts.deny', and restart `portsentry`.
 ---
 <!-- navigation links -->
 [:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
 
 [home]: ../README.md
-[back]: ./dos_protection.md
+[back]: ./port_scans_protection.md
 [next]: ./stop_needless_services.md

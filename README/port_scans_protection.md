@@ -40,7 +40,7 @@ After enabling **logging**, let's list the current configuration of iptables:
 sudo iptables -L
 ```
 
-The output of that command should reflect that we'll be logging ``all`` activity in the `INPUT`, `FORWARD`, and `OUTPUT` chains.
+The output of that command should reflect that we'll be logging `all` activity in the `INPUT`, `FORWARD`, and `OUTPUT` chains.
 
 ### Psad Configuration
 We can find the `psad` configuration file under the `/etc/psad` directory. The main configuration file is named `psad.conf` as follows:
@@ -100,10 +100,9 @@ sudo systemctl start psadwatchd.service
 sudo systemctl enable psadwatchd.service 
 ```
 
-Then I realized that I had installed **Version 2.4.3** (from 2015), and that the latest version was **2.4.5** (from 2018). That led me to the conclusion (in 2022) that `psad` was abandonware.
+Then I realized that I had installed **Version 2.4.3** (from 2015), and that the latest version was **2.4.5** (from 2018). That led me to the conclusion (in 2022) that `psad` was maybe abandonware?
 
 ![abandonware](images/abandonware.png)
-
 
 ### Uninstall Psad
 To remove psad, along with its configuration, data and all of its dependencies, we can use the following command:
@@ -119,4 +118,4 @@ sudo apt-get -y autoremove --purge psad
 
 [home]: ../README.md
 [back]: ./port_scans_protection.md
-[next]: ./stop_needless_services.md
+[next]: ./port_scans_protection2.md

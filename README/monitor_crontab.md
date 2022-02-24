@@ -55,8 +55,8 @@ Here's the script:
 #!/bin/sh
 
 file=/etc/crontab
-old_sum=${file}_sum.old
-new_sum=${file}_sum.new
+old_sum=/var/log/crontab_sum.old
+new_sum=/var/log/crontab_sum.new
 
 if [ ! -f $old_sum ]
 then

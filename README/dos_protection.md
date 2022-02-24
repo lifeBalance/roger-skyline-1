@@ -81,6 +81,7 @@ Status
 `- Jail list:   sshd
 ```
 
+### Testing SSH Jail
 We can **test** our **ssh jail** by re-enabling `PasswordAuthentication` in the OpenSSH configuration file (`/etc/ssh/sshd_config`). Make sure you have:
 ```
 PasswordAuthentication yes

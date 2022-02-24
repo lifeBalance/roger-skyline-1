@@ -29,6 +29,8 @@ Now we have to create the `post-receive`file; so let's `cd` into the folder cont
 git --work-tree=/var/www/evil --git-dir=/home/roger/bare_evil.git checkout -f
 ```
 
+> Don't forget that the `/var/www/evil` **folder** must exist! Also, we should have permissions to write in `/var/www` (we accomplished both things in the section before).
+
 Let's make it executable:
 ```
 chmod +x /home/roger/bare_evil.git/hooks/post-receive

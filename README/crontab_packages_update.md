@@ -1,13 +1,13 @@
 # Schedule Task for Packages Update
 For this part of the assignment we have to do two things:
 
-1. Create a **script** that updates all the sources of packages, then your packages and which logs the whole in a file named /var/log/update_script.log. 
+1. Create a **script** that updates all the sources of packages, then your packages and which logs the whole in a file named `/var/log/update_script.log`. 
 2. Create a **scheduled task** for this script once a week at **4AM** and every time the machine reboots.
 
 ## 1. Update Packages Script
 Let's start by creating a folder to store our **scripts**:
 ```
-mkdir -r ./local/bin
+mkdir -p ./local/bin
 ```
 
 Let's add it to our PATH; so in our shell configuration we'll add:
@@ -26,9 +26,19 @@ The contents:
 
 updates_log=/var/log/update_script.log
 
-printf "\nPackages Update %s" "$(date)" >> $updates_log
-sudo apt update -y	| sudo tee -a "$(updates_log)"
-sudo apt upgrade -y	| sudo tee -a "$(updates_log)"
+sudo touch "$updates_log"
+
+sudo printf "\nPackages Update %s" "$(date)" >> $updates_log
+sudo apt update -y	| sudo tee -a "$updates_log"
+sudo apt upgrade -y	| sudo tee -a "$updates_log"
+```
+
+### Adding user to `syslog` group
+The issue with the script above is that is trying to create a file in a directory that belongs to the **user** `root`, and the **group** `syslog`. So in order to create or modify that file, we have to add our user to the aforementioned group:
+```
+sudo usermod -aG syslog roger
+sudo chown roger:syslog /var/log/update_script.log
+sudo reboot
 ```
 
 Now we have to **upload** the script to the server. For that we'll use the [scp](https://www.ssh.com/academy/ssh/scp) command (short for **Secure File Copy**), which has the following syntax:

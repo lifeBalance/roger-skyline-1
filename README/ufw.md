@@ -2,7 +2,7 @@
 For this section we have to have to set the rules of your firewall on your server only with the services used
 outside the VM.
 
-> We'll be using [UFW](https://en.wikipedia.org/wiki/Uncomplicated_Firewall) (short for Uncomplicated Firewall), which was made available by default in all Ubuntu installations after 8.04 LTS. It's an interface to [iptables](https://en.wikipedia.org/wiki/Iptables), which is a program to configure the configure the IP packet filter rules of the [Netfilter kernel framework](https://en.wikipedia.org/wiki/Netfilter). In short, **ufw** is an easy alternative to **iptables**.
+> We'll be using [UFW](https://en.wikipedia.org/wiki/Uncomplicated_Firewall) (short for Uncomplicated Firewall), which was made **available by default** in all Ubuntu installations after 8.04 LTS. It's an interface to [iptables](https://en.wikipedia.org/wiki/Iptables), which is a program to configure the configure the IP packet filter rules of the [Netfilter kernel framework](https://en.wikipedia.org/wiki/Netfilter). In short, **ufw** is an easy alternative to **iptables**.
 
 But if for some reason, `ufw` was not installed:
 ```
@@ -18,6 +18,14 @@ The default policies are generally enough for **personal computers**, but **serv
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 ```
+
+We can check the **status** of the firewall:
+```
+sudo ufw status
+Status: inactive
+```
+
+**Inactive**, which is a good thing at this point, since we still don't have a **rule** in place to allow `ssh` connections.
 
 ## Creating UFW rules
 There are three ways of creating **UFW rules**:
@@ -41,6 +49,8 @@ sudo ufw allow "OpenSSH"
 
 > "OpenSSH" is name of the **application profile** we want to enable. We can obtain these names with `sudo ufw app list` command.
 
+Unfortunately, since we changed the **port** for `ssh`, using the application profile won't make it.
+
 ### 2. Service Names
 Another way to configure **UFW** to allow incoming connections for a given service, it's by referencing the service name; for example, to create a rule to allow `ssh` connections we can also do:
 ```
@@ -62,7 +72,7 @@ sudo ufw allow 443/tcp
 > Port `80/tcp` is for HTTP, whereas `443/tcp` is for HTTPS.
 
 ### Enabling UFW
-Finally, once we have rules in place to allow for incoming/outcoming connections, we are ready to enable the firewall:
+Finally, once we have rules in place to allow for incoming/outcoming connections, we are ready to **enable** the firewall:
 ```
 sudo ufw enable
 ```
@@ -72,6 +82,16 @@ And check its **status**:
 sudo ufw status
 ```
 
+### Deleting Rules
+In order to delete a **rule**, we need to use it's number, which we can get with:
+```
+sudo ufw status numbered
+```
+
+Then we use that number to delete its corresponding rule:
+```
+sudo ufw delete 2
+```
 ---
 <!-- navigation links -->
 [:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]

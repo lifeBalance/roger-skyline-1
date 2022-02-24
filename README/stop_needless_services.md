@@ -54,6 +54,9 @@ sudo systemctl disable unattended-upgrades
 ```
 
 That's how we should proceed with the rest of the services we want to **disable**.
+
+> We could afford to **disable** the `unattended-upgrades` service, because the next task in the project asks us to create a **scheduled task** that takes care of it. Apart from that, Ubuntu Server comes with the indispensable services for functioning properly.
+
 ---
 <!-- navigation links -->
 [:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
