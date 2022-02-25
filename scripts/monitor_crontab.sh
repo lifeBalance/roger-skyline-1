@@ -1,8 +1,8 @@
 #!/bin/sh
 
 file=/etc/crontab
-old_sum=${file}_sum.old
-new_sum=${file}_sum.new
+old_sum=/var/log/crontab_sum.old
+new_sum=/var/log/crontab_sum.new
 
 if [ ! -f $old_sum ]
 then
@@ -14,6 +14,6 @@ shasum < $file > $new_sum		# Compute new sum
 
 if [ "$(diff $old_sum $new_sum)" != "" ]
 then
-	mail -s "crontab has been modified!" root
+	echo "crontab has been modified." | mail -s "Warning!" root
 	shasum < $file > $old_sum
 fi

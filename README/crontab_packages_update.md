@@ -41,7 +41,12 @@ sudo chown roger:syslog /var/log/update_script.log
 sudo reboot
 ```
 
-Now we have to **upload** the script to the server. For that we'll use the [scp](https://www.ssh.com/academy/ssh/scp) command (short for **Secure File Copy**), which has the following syntax:
+Now we have to **upload** the script to the server. For that we'll use the [scp](https://www.ssh.com/academy/ssh/scp) command (short for **Secure File Copy**):
+```
+scp -P 69 ./scripts/update_packages.sh roger@192.168.56.2:/home/roger/.local/bin
+```
+
+The `scp` command has the following syntax:
 ```
 scp <file to upload> <username>@<hostname>:<destination path>
 ```

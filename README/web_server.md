@@ -69,8 +69,8 @@ scp index.html rick_morty.jpg roger@192.168.56.2:/var/www/html/ -p 69
 We may find **permissions** issue when trying to copy the files to `/var/www/`; that can be solved setting our user as owner of the folder and its contents:
 ```
 ssh roger@192.168.56.2 -p 69
-sudo chown -R $(whoami) /var/www`
-mkdir /var/www/evil
+sudo mkdir /var/www/evil
+sudo chown -R $(whoami) /var/www/evil
 ```
 
 While we were at it, we also created a folder for our site, stay tuned!

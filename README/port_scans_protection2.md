@@ -85,7 +85,7 @@ Finally, to get ourselves **unblocked**:
 sudo iptables -D INPUT -s 123.45.6.7 -j DROP
 ```
 
-And also delete the IP at the end of `/etc/hosts.deny', and restart `portsentry`.
+And also delete the IP at the end of `/etc/hosts.deny`, and restart `portsentry`.
 ---
 <!-- navigation links -->
 [:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]
