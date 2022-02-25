@@ -37,12 +37,15 @@ Once the ISO file is *inserted*, we just have to start up the machine:
 ### Language
 Next we're faced with the first step of the installation, choosing our **language**:
 
-![language](images/installing_ubuntu_server/06_language.png)
+![language](images/installing_ubuntu_server/06_select_language.png)
+
+### Update Innstaller
+![update installer](images/installing_ubuntu_server/07_update_installer.png)
 
 ### Keyboard
 Then the **keyboard layout**, where we can also select layout variants.
 
-![keyboard](images/installing_ubuntu_server/07_select_keyboard_layout.png)
+![keyboard](images/installing_ubuntu_server/08_select_keyboard_layout.png)
 
 ### Network Interface
 Time to configure the network interface. We'll go with the defaults in this case:
