@@ -64,7 +64,7 @@ Now, if we try to run some **portscan**:
 sudo nmap -PN -sS 192.168.56.2
 ```
 
-> You may want to disable the firewall in order to test the **blocking IP** behaviour.
+> You may want to **disable** the firewall in order to test the **blocking IP** behaviour.
 
 We may end up getting our IPs blocked, hence losing `ssh` access to our server. We can access the **virtual machine**, and check the files:
 ```
@@ -80,12 +80,15 @@ A good idea, if we plan on keep doing portscan experimentation, would be to add 
 /etc/portsentry/portsentry.ignore.static
 ```
 
-Finally, to get ourselves **unblocked**:
+Finally, to get ourselves **unblocked**, we have to delete the IP at the end of `/etc/hosts.deny`, and restart `portsentry`.
+
+> Try to reboot the machine if that doesn't work.
+
+We may also have to:
 ```
 sudo iptables -D INPUT -s 123.45.6.7 -j DROP
 ```
 
-And also delete the IP at the end of `/etc/hosts.deny`, and restart `portsentry`.
 ---
 <!-- navigation links -->
 [:arrow_backward:][back] ║ [:house:][home] ║ [:arrow_forward:][next]

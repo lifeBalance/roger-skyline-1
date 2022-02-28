@@ -1,6 +1,8 @@
 # roger-skyline-1.5
 This project, is about installing a Virtual Machine, and discover the basics about system and network administration as well as a lots of services used on a server machine.
 
+![graded](images/README/graded.png)
+
 ## Mandatory Part
 ## VM Part
 For this part of the assignment we have to create a [virtual machine](https://en.wikipedia.org/wiki/Virtual_machine) in the [hypervisor](https://en.wikipedia.org/wiki/Hypervisor) of our choice. There are plenty of hypervisors out there, but we chose [VirtualBox](https://www.virtualbox.org/) because it's quite intuitive and easy to use.
@@ -56,6 +58,8 @@ The next parts of the assignment have separate notes:
 * [Stop Needless Services](./README/stop_needles_services.md)
 * [Schedule a Task for Updating Packages](./README/crontab_packages_update.md)
 * [Monitor crontab](./README/monitor_crontab.md)
+
+> I did the *protection against Port Scans* part of the project with `psad`, then with `portsentry. The second one is definitely deprecated, and the first one probably too (last version is from 2018). I think the way to go with this part is [Snort](https://www.snort.org/).
 
 ## Web Server
 As an **optional** part of the assignment, we have to:
