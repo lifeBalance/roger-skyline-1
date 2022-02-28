@@ -1,7 +1,7 @@
 # roger-skyline-1.5
 This project, is about installing a Virtual Machine, and discover the basics about system and network administration as well as a lots of services used on a server machine.
 
-![graded](images/README/graded.png)
+![graded](./README/images/graded.png)
 
 ## Mandatory Part
 ## VM Part
